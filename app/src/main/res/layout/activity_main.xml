@@ -11,52 +11,55 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.CoordinatorLayout
-            android:id="@+id/codntLyt"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <android.support.design.widget.AppBarLayout
-                android:id="@+id/apBrLyt"
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLyt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"/>
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/tobr"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:layout_scrollFlags="scroll|enterAlways|snap" />
-
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/tabLyt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </android.support.design.widget.AppBarLayout>
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vwPgr"
+            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/codntLyt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/view_spacing"
-                app:layout_behavior="br.com.danielsan.dscontacts.widgets.behaviors.SlideScrollAwareBehavior"/>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vwPgr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        </android.support.design.widget.CoordinatorLayout>
+                <br.com.danielsan.dscontacts.widgets.ShadowView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"/>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/view_spacing"
+                    app:layout_behavior="br.com.danielsan.dscontacts.widgets.behaviors.SlideScrollAwareBehavior"/>
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </LinearLayout>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nvgtVw"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:menu="@menu/drawer"/>
+            app:menu="@menu/drawer">
+
+            <br.com.danielsan.dscontacts.widgets.ShadowView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+        </android.support.design.widget.NavigationView>
 
     </android.support.v4.widget.DrawerLayout>
 
