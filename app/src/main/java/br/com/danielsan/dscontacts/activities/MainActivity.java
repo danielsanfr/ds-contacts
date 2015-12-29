@@ -31,6 +31,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setupViews() {
+        this.setSupportActionBar(binding.tobr);
+        this.getSupportActionBar().setTitle(R.string.app_name);
         binding.nvgtVw.setNavigationItemSelectedListener(onNavigationItemSelected);
         binding.vwPgr.setAdapter(new MainPagerAdapter(this, this.getSupportFragmentManager()));
         binding.tabLyt.setupWithViewPager(binding.vwPgr);
@@ -40,7 +42,7 @@ public class MainActivity extends BaseActivity {
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
             item.setChecked(true);
-            binding.drwLyt.closeDrawers();
+            binding.rootContent.closeDrawers();
             return false;
         }
     };

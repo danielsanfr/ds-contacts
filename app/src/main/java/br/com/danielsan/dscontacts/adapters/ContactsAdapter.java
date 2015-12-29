@@ -21,8 +21,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
     }
 
     @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
     public void onBindViewHolder(ContactsViewHolder holder, int position) {
-        ((TextView) holder.itemView).setText("Daniel San Ferreira da Rocha");
+        ((TextView) holder.itemView).setText("Daniel San Ferreira da Rocha - " + position);
     }
 
     @Override
