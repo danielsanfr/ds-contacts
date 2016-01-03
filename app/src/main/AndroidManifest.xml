@@ -16,6 +16,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activities.AddEditContactActivity"/>
+
     </application>
 
 </manifest>

@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity {
         binding.nvgtVw.setNavigationItemSelectedListener(onNavigationItemSelected);
         binding.vwPgr.setAdapter(new MainPagerAdapter(this, this.getSupportFragmentManager()));
         binding.tabLyt.setupWithViewPager(binding.vwPgr);
+        binding.fotnAtoBtn.setOnClickListener(onClickAddContact);
     }
 
     private void setupActionBar() {
@@ -85,6 +86,13 @@ public class MainActivity extends BaseActivity {
             supportInvalidateOptionsMenu();
             binding.rootContent.closeDrawers();
             return false;
+        }
+    };
+
+    private final View.OnClickListener onClickAddContact = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(AddEditContactActivity.class);
         }
     };
 

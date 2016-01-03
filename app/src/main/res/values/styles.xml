@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="TextAppearance.AllCaps" parent="Theme.AppCompat.Light">
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="ButtonRipple" parent="Widget.AppCompat.Button.Borderless"/>
 </resources>

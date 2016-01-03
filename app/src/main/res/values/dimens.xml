@@ -17,8 +17,10 @@
     <dimen name="view_size">64dp</dimen>
     <dimen name="view_size_085">54.4dp</dimen>
     <dimen name="view_size_075">48dp</dimen>
+    <dimen name="view_size_06">38.4dp</dimen>
     <dimen name="view_size_05">32dp</dimen>
     <dimen name="view_size_025">16dp</dimen>
 
-    <dimen name="font_normal">12sp</dimen>
+    <dimen name="font_normal">14sp</dimen>
+    <dimen name="font_title">16sp</dimen>
 </resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtTxtContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/view_spacing_05"
+            android:layout_marginRight="@dimen/view_spacing_05"/>
+
+        <ImageButton
+            android:id="@+id/imgBtnRemove"
+            android:layout_width="@dimen/view_size_06"
+            android:layout_height="@dimen/view_size_06"
+            android:layout_gravity="center_vertical"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_call_gray_24dp"
+            style="@style/ButtonRipple"/>
+
+    </LinearLayout>
+
+</layout>
