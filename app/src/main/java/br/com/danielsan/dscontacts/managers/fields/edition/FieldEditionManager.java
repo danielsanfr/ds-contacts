@@ -50,6 +50,16 @@ public abstract class FieldEditionManager implements Parcelable {
         dest.writeInt(fieldTitle);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof FieldEditionManager) {
+            FieldEditionManager other = (FieldEditionManager) o;
+            return (fieldIcon == other.fieldIcon && fieldTitle == other.fieldTitle);
+        }
+
+        return false;
+    }
+
     public abstract void onCreateSubView(LayoutInflater inflater, LinearLayout fieldContainer, Bundle savedInstanceState);
 
 }

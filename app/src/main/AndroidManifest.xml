@@ -17,7 +17,7 @@
         </activity>
 
         <activity
-            android:name=".activities.AddEditContactActivity"/>
+            android:name=".activities.EditionContactActivity"/>
 
     </application>
 

@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity {
     private final View.OnClickListener onClickAddContact = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            startActivity(AddEditContactActivity.class);
+            startActivity(EditionContactActivity.class);
         }
     };
 
