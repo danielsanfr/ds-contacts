@@ -14,7 +14,7 @@ import br.com.danielsan.dscontacts.databinding.FieldEditionBasicBinding;
 public class NicknameFieldEditionManager extends MultipleFieldEditionManager {
 
     public NicknameFieldEditionManager() {
-        super(R.drawable.ic_call_gray_24dp, R.string.nickname);
+        super(R.drawable.ic_person_gray_24dp, R.string.nickname);
     }
 
     protected NicknameFieldEditionManager(Parcel in) {

@@ -16,7 +16,7 @@ import br.com.danielsan.dscontacts.databinding.FieldEditionWorkBinding;
 public class PictureFieldEditionManager extends FieldEditionManager {
 
     public PictureFieldEditionManager() {
-        super(R.drawable.ic_call_gray_24dp, R.string.picture);
+        super(R.drawable.ic_picture_gray_24dp, R.string.picture);
     }
 
     protected PictureFieldEditionManager(Parcel in) {

@@ -18,7 +18,7 @@ import br.com.danielsan.dscontacts.databinding.FieldEditionWorkBinding;
 public class WorkFieldEditionManager extends FieldEditionManager {
 
     public WorkFieldEditionManager() {
-        super(R.drawable.ic_call_gray_24dp, R.string.work);
+        super(R.drawable.ic_work_gray_24dp, R.string.work);
     }
 
     protected WorkFieldEditionManager(Parcel in) {
