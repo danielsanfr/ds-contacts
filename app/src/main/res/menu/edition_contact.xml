@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mn_favorite"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_star_outline_white_24dp"
+        android:checkable="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/mn_confirm"
+        android:title="@string/confirm"
+        android:icon="@drawable/ic_check_white_24dp"
+        app:showAsAction="ifRoom" />
+</menu>
