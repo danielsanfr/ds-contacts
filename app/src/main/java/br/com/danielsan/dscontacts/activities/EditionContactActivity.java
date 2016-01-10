@@ -9,6 +9,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import br.com.danielsan.dscontacts.R;
+import br.com.danielsan.dscontacts.adapters.FieldsAdapter;
 import br.com.danielsan.dscontacts.databinding.ActivityEditionContactBinding;
 import br.com.danielsan.dscontacts.managers.fields.edition.FieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.NicknameFieldEditionManager;
@@ -45,18 +46,16 @@ public class EditionContactActivity extends BaseActivity {
     private void showAddFieldDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.add_field);
-        builder.setItems(new CharSequence[]{"Daniel", "Erika"}, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-//        builder.setSingleChoiceItems(new FieldsAdapter(fieldEditionManagers), -1, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//            }
-//        });
+        builder.setSingleChoiceItems(new FieldsAdapter(fieldEditionManagers), -1, onClickItemDialog);
         builder.show();
     }
+
+    private final DialogInterface.OnClickListener onClickItemDialog = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+        }
+    };
 
     public final View.OnClickListener onClickAddField = new View.OnClickListener() {
         @Override
