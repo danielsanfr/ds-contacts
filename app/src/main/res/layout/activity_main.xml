@@ -21,7 +21,11 @@
                 android:id="@+id/tabLyt"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"/>
+                android:background="?attr/colorPrimary"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabTextColor="@color/whiteSemitransparent"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextAppearance="@style/TabTextAppearance.AllCaps"/>
 
             <android.support.design.widget.CoordinatorLayout
                 android:id="@+id/codntLyt"
@@ -36,14 +40,17 @@
 
                 <br.com.danielsan.dscontacts.widgets.ShadowView
                     android:layout_width="match_parent"
-                    android:layout_height="5dp"/>
+                    android:layout_height="8dp"/>
 
+                <!--Some bug on marginBottom-->
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/fotnAtoBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
-                    android:layout_margin="@dimen/view_spacing"
+                    android:layout_marginEnd="@dimen/view_spacing"
+                    android:layout_marginRight="@dimen/view_spacing"
+                    android:layout_marginBottom="@dimen/fab_margin_bottom"
                     android:src="@drawable/ic_person_add_white_24dp"
                     app:layout_behavior="br.com.danielsan.dscontacts.widgets.behaviors.SlideScrollAwareBehavior"/>
 
@@ -60,7 +67,7 @@
 
             <br.com.danielsan.dscontacts.widgets.ShadowView
                 android:layout_width="match_parent"
-                android:layout_height="5dp"/>
+                android:layout_height="8dp"/>
 
         </android.support.design.widget.NavigationView>
 

@@ -3,6 +3,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="fab_margin">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_top">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_left">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_right">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_bottom">-2.5dp</dimen>
+
     <dimen name="view_spacing_5">80dp</dimen>
     <dimen name="view_spacing_3">48dp</dimen>
     <dimen name="view_spacing_2">32dp</dimen>

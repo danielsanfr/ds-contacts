@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_top">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_left">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_right">@dimen/view_spacing</dimen>
+    <dimen name="fab_margin_bottom">@dimen/view_spacing</dimen>
+</resources>
