@@ -42,14 +42,19 @@ public class Name implements Parcelable {
     }
 
     public void setName(String name) {
-        this.name = name.trim();
-        this.updateParts();
+        if (!this.name.equals(name)) {
+            this.name = name.trim();
+            this.updateParts();
+        }
     }
     public void setName(String firstName, String middleName, String lastName) {
-        this.firstName = firstName.trim();
-        this.middleName = middleName.trim();
-        this.lastName = lastName.trim();
-        this.updateName();
+        if (!this.firstName.equals(firstName) || !this.middleName.equals(middleName)
+                || !this.lastName.equals(lastName)) {
+            this.firstName = firstName.trim();
+            this.middleName = middleName.trim();
+            this.lastName = lastName.trim();
+            this.updateName();
+        }
     }
 
     public String getFirstName() {
@@ -57,8 +62,10 @@ public class Name implements Parcelable {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName.trim();
-        this.updateName();
+        if (!this.firstName.equals(firstName)) {
+            this.firstName = firstName.trim();
+            this.updateName();
+        }
     }
 
     public String getMiddleName() {
@@ -66,8 +73,10 @@ public class Name implements Parcelable {
     }
 
     public void setMiddleName(String middleName) {
-        this.middleName = middleName.trim();
-        this.updateName();
+        if (!this.middleName.equals(middleName)) {
+            this.middleName = middleName.trim();
+            this.updateName();
+        }
     }
 
     public String getLastName() {
@@ -75,12 +84,19 @@ public class Name implements Parcelable {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName.trim();
-        this.updateName();
+        if (!this.lastName.equals(lastName)) {
+            this.lastName = lastName.trim();
+            this.updateName();
+        }
     }
 
     public boolean isEmpty() {
         return name.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     private void updateName() {
@@ -98,6 +114,10 @@ public class Name implements Parcelable {
     private void updateParts() {
         if (!shouldUpdateParts)
             return;
+
+        firstName = "";
+        middleName = "";
+        lastName = "";
 
         String[] names = name.split(" ");
         int length = names.length;

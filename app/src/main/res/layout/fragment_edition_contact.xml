@@ -25,6 +25,7 @@
                 app:expandedTitleMarginEnd="64dp">
 
                 <fragment
+                    android:id="@+id/fragNameFieldEdition"
                     android:name="br.com.danielsan.dscontacts.fragments.NameFieldEditionFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

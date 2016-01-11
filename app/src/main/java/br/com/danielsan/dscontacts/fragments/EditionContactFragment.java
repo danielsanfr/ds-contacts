@@ -32,25 +32,25 @@ import br.com.danielsan.dscontacts.managers.fields.edition.WorkFieldEditionManag
  */
 public class EditionContactFragment extends BaseFragment {
 
+    private static final String ARG_IS_FAVORITY = "is_favorite";
     private static final String ARG_BTN_ADD_ORGANIZATION_VISIBILITY = "btn_add_organization_visibility";
 
+    private MenuItem mnFavorite;
     private FragmentEditionContactBinding binding;
+    private NameFieldEditionFragment fragNameFieldEdition;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentEditionContactBinding.inflate(inflater, container, false);
+        fragNameFieldEdition = (NameFieldEditionFragment) this.getChildFragmentManager().findFragmentById(R.id.fragNameFieldEdition);
+        fragNameFieldEdition.setOnNameChangedListener(onNameChanged);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (savedInstanceState != null)
-            this.restoreInstance(savedInstanceState);
-        else
-            this.addFragmentChild(R.id.frmLytGroupField, FieldEditionFragment.newInstance(new GroupFieldEditionManager()));
-
         binding.clasgToolbarLyt.setTitle(this.getText(R.string.app_name));
         binding.clasgToolbarLyt.setExpandedTitleColor(ContextCompat.getColor(this.getContext(), android.R.color.transparent));
 
@@ -59,17 +59,27 @@ public class EditionContactFragment extends BaseFragment {
         binding.toolbar.setNavigationIcon(R.drawable.ic_close_white_24dp);
         binding.toolbar.setNavigationOnClickListener(onClickClose);
 
+        mnFavorite = binding.toolbar.getMenu().findItem(R.id.mn_favorite);
+
         binding.btnAddOrganization.setOnClickListener(onClickAddOrganization);
+
+        if (savedInstanceState != null)
+            this.restoreInstance(savedInstanceState);
+        else
+            this.addFragmentChild(R.id.frmLytGroupField, FieldEditionFragment.newInstance(new GroupFieldEditionManager()));
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putBoolean(ARG_IS_FAVORITY, mnFavorite.isChecked());
         outState.putInt(ARG_BTN_ADD_ORGANIZATION_VISIBILITY, binding.btnAddOrganization.getVisibility());
     }
 
     @SuppressWarnings("ResourceType")
     private void restoreInstance(Bundle savedInstanceState) {
+        if (savedInstanceState.getBoolean(ARG_IS_FAVORITY))
+            onMenuItemClick.onMenuItemClick(mnFavorite);
         binding.btnAddOrganization.setVisibility(savedInstanceState.getInt(ARG_BTN_ADD_ORGANIZATION_VISIBILITY));
     }
 
@@ -88,6 +98,16 @@ public class EditionContactFragment extends BaseFragment {
                 default:
                     return false;
             }
+        }
+    };
+
+    private final NameFieldEditionFragment.OnNameChangedListener onNameChanged = new NameFieldEditionFragment.OnNameChangedListener() {
+        @Override
+        public void onNameChanged(CharSequence name) {
+            if (name.length() == 0)
+                binding.clasgToolbarLyt.setTitle(getText(R.string.app_name));
+            else
+                binding.clasgToolbarLyt.setTitle(name);
         }
     };
 

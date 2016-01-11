@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import br.com.danielsan.dscontacts.databinding.FragmentNameFieldEditionBinding;
 import br.com.danielsan.dscontacts.models.Name;
+import br.com.ilhasoft.support.view.SimpleTextWatcher;
 
 /**
  * Created by daniel on 10/01/16.
@@ -17,12 +18,15 @@ import br.com.danielsan.dscontacts.models.Name;
 public class NameFieldEditionFragment extends BaseFragment {
 
     private Name name;
+    private boolean shouldUpdate;
     private FragmentNameFieldEditionBinding binding;
+    private OnNameChangedListener onNameChangedListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         name = new Name();
+        shouldUpdate = true;
     }
 
     @Nullable
@@ -36,6 +40,14 @@ public class NameFieldEditionFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.imgBtnExpand.setOnClickListener(onClickExpand);
+        binding.edtTxtName.addTextChangedListener(textWatcherName);
+        binding.edtTxtFirstName.addTextChangedListener(textWatcherParts);
+        binding.edtTxtMiddleName.addTextChangedListener(textWatcherParts);
+        binding.edtTxtLastName.addTextChangedListener(textWatcherParts);
+    }
+
+    public void setOnNameChangedListener(OnNameChangedListener onNameChangedListener) {
+        this.onNameChangedListener = onNameChangedListener;
     }
 
     private void toggleNamesVisibility() {
@@ -46,10 +58,12 @@ public class NameFieldEditionFragment extends BaseFragment {
             binding.txtIptLytMiddleName.setVisibility(View.VISIBLE);
             binding.txtIptLytLastName.setVisibility(View.VISIBLE);
 
+            shouldUpdate = false;
             name.setName(this.getTrimmedString(binding.edtTxtName));
             binding.edtTxtFirstName.setText(name.getFirstName());
             binding.edtTxtMiddleName.setText(name.getMiddleName());
             binding.edtTxtLastName.setText(name.getLastName());
+            shouldUpdate = true;
         } else {
             binding.imgBtnExpand.setRotation(0);
             binding.txtIptLytName.setVisibility(View.VISIBLE);
@@ -57,10 +71,18 @@ public class NameFieldEditionFragment extends BaseFragment {
             binding.txtIptLytMiddleName.setVisibility(View.GONE);
             binding.txtIptLytLastName.setVisibility(View.GONE);
 
+            shouldUpdate = false;
             name.setName(this.getTrimmedString(binding.edtTxtFirstName),
                          this.getTrimmedString(binding.edtTxtMiddleName),
                          this.getTrimmedString(binding.edtTxtLastName));
             binding.edtTxtName.setText(name.getName());
+            shouldUpdate = true;
+        }
+    }
+
+    private void dispatchOnNameChanged() {
+        if (onNameChangedListener != null) {
+            onNameChangedListener.onNameChanged(name.getName());
         }
     }
 
@@ -68,11 +90,39 @@ public class NameFieldEditionFragment extends BaseFragment {
         return editText.getText().toString().trim();
     }
 
+    private final SimpleTextWatcher textWatcherName = new SimpleTextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            if (shouldUpdate) {
+                name.setName(s.toString());
+                dispatchOnNameChanged();
+            }
+        }
+    };
+
+    private final SimpleTextWatcher textWatcherParts = new SimpleTextWatcher() {
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            if (shouldUpdate) {
+                name.setName(getTrimmedString(binding.edtTxtFirstName),
+                             getTrimmedString(binding.edtTxtMiddleName),
+                             getTrimmedString(binding.edtTxtLastName));
+                dispatchOnNameChanged();
+            }
+        }
+    };
+
     private final View.OnClickListener onClickExpand = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             toggleNamesVisibility();
         }
     };
+
+    public interface OnNameChangedListener {
+        void onNameChanged(CharSequence name);
+    }
 
 }

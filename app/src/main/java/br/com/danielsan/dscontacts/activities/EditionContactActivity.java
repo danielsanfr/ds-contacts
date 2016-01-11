@@ -46,6 +46,7 @@ public class EditionContactActivity extends BaseActivity {
             fotnAtoBtn = this.findViewById(R.id.fotnAtoBtn);
         }
         fotnAtoBtn.setOnClickListener(onClickAddField);
+        this.checkEditionMangersSize();
     }
 
     private void newInstance() {
@@ -72,17 +73,22 @@ public class EditionContactActivity extends BaseActivity {
         builder.show();
     }
 
+    private void checkEditionMangersSize() {
+        if (fieldEditionManagers.isEmpty()) {
+            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) fotnAtoBtn.getLayoutParams();
+            layoutParams.setBehavior(null);
+            fotnAtoBtn.setLayoutParams(layoutParams);
+            fotnAtoBtn.setVisibility(View.GONE);
+        }
+    }
+
     private final DialogInterface.OnClickListener onClickItemDialog = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
-            editionContactFrag.addFieldFragment(fieldEditionManagers.remove(which));
-            if (fieldEditionManagers.isEmpty()) {
-                CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) fotnAtoBtn.getLayoutParams();
-                layoutParams.setBehavior(null);
-                fotnAtoBtn.setLayoutParams(layoutParams);
-                fotnAtoBtn.setVisibility(View.GONE);
-            }
+            if (which >= 0)
+                editionContactFrag.addFieldFragment(fieldEditionManagers.remove(which));
+            checkEditionMangersSize();
         }
     };
 
