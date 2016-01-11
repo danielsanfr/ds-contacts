@@ -7,7 +7,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:src="@drawable/ic_call_gray_24dp"
+            android:src="@drawable/ic_photo_gray_48dp"
             android:layout_width="@dimen/view_size_15"
             android:layout_height="@dimen/view_size_15"
             android:layout_marginEnd="@dimen/view_spacing_05"

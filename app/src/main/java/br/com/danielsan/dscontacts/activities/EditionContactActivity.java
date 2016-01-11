@@ -2,6 +2,7 @@ package br.com.danielsan.dscontacts.activities;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class EditionContactActivity extends BaseActivity {
 
     private static final String ARG_FIELD_EDITION_MANAGERS = "field_edition_mangers";
 
+    private View fotnAtoBtn;
     private EditionContactFragment editionContactFrag;
     private ArrayList<FieldEditionManager> fieldEditionManagers;
 
@@ -38,12 +40,12 @@ public class EditionContactActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        View view = this.findViewById(R.id.fotnAtoBtn);
-        if (view == null) {
+        fotnAtoBtn = this.findViewById(R.id.fotnAtoBtn);
+        if (fotnAtoBtn == null) {
             LayoutInflater.from(this).inflate(R.layout.view_floating_action_button, (ViewGroup) editionContactFrag.getView(), true);
-            view = this.findViewById(R.id.fotnAtoBtn);
+            fotnAtoBtn = this.findViewById(R.id.fotnAtoBtn);
         }
-        view.setOnClickListener(onClickAddField);
+        fotnAtoBtn.setOnClickListener(onClickAddField);
     }
 
     private void newInstance() {
@@ -74,6 +76,13 @@ public class EditionContactActivity extends BaseActivity {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
+            editionContactFrag.addFieldFragment(fieldEditionManagers.remove(which));
+            if (fieldEditionManagers.isEmpty()) {
+                CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) fotnAtoBtn.getLayoutParams();
+                layoutParams.setBehavior(null);
+                fotnAtoBtn.setLayoutParams(layoutParams);
+                fotnAtoBtn.setVisibility(View.GONE);
+            }
         }
     };
 

@@ -3,12 +3,10 @@
     <style name="ThemeBase.Translucent" parent="ThemeBase">
         <item name="colorPrimaryDark">@color/orange</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
     </style>
     <style name="ThemeBase.NoActionBar.Translucent" parent="ThemeBase.NoActionBar">
         <item name="colorPrimaryDark">@color/orange</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
     </style>
     <style name="EditionContactTheme" parent="ThemeBase.NoActionBar.Translucent"/>
 </resources>
