@@ -11,7 +11,7 @@
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBarLyr"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
 
             <android.support.design.widget.CollapsingToolbarLayout
@@ -21,62 +21,34 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleMarginStart="48dp"
-                app:expandedTitleMarginEnd="64dp" >
+                app:expandedTitleMarginEnd="64dp">
 
-                <LinearLayout
+                <fragment
+                    android:name="br.com.danielsan.dscontacts.fragments.NameFieldEditionFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="60dp"
-                    android:orientation="horizontal"
                     app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.6" >
-
-                    <ImageView
-                        android:layout_width="72dp"
-                        android:layout_height="32dp"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/ic_person_white_24dp"
-                        android:scaleType="fitCenter"/>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="1"
-                        android:background="@color/blue"/>
-
-                    <ImageView
-                        android:id="@+id/img_vw_expand_name"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_call_gray_24dp"
-                        android:scaleType="fitCenter"/>
-
-                </LinearLayout>
+                    app:layout_collapseParallaxMultiplier="0.6"
+                    tools:layout="@layout/fragment_name_field_edition"/>
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:layout_collapseMode="pin" />
+                    app:layout_collapseMode="pin"/>
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v4.widget.NestedScrollView
+        <fragment
+            android:id="@+id/fragEditionContact"
+            android:name="br.com.danielsan.dscontacts.fragments.EditionContactFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <fragment
-                android:id="@+id/rootContent"
-                android:name="br.com.danielsan.dscontacts.fragments.EditionContactFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_edition_contact"/>
-
-        </android.support.v4.widget.NestedScrollView>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:layout="@layout/fragment_edition_contact"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fotnAtoBtn"

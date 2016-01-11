@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/view_spacing_4"
+        android:paddingBottom="@dimen/view_spacing"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/view_size_06"
+            android:layout_height="@dimen/view_size_06"
+            android:layout_marginTop="@dimen/view_spacing_05"
+            android:layout_marginEnd="@dimen/view_spacing_05"
+            android:layout_marginLeft="@dimen/view_spacing"
+            android:layout_marginRight="@dimen/view_spacing_05"
+            android:layout_marginStart="@dimen/view_spacing"
+            android:src="@drawable/ic_person_white_24dp"
+            android:scaleType="fitCenter"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtIptLytName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:theme="@style/EditionName.TextInputLayout">
+
+                <EditText
+                    android:id="@+id/edtTxtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    style="@style/EditionName.EditText"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtIptLytFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:theme="@style/EditionName.TextInputLayout">
+
+                <EditText
+                    android:id="@+id/edtTxtFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/first_name"
+                    style="@style/EditionName.EditText"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtIptLytMiddleName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:theme="@style/EditionName.TextInputLayout">
+
+                <EditText
+                    android:id="@+id/edtTxtMiddleName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/middle_name"
+                    style="@style/EditionName.EditText"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/txtIptLytLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:theme="@style/EditionName.TextInputLayout">
+
+                <EditText
+                    android:id="@+id/edtTxtLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_name"
+                    style="@style/EditionName.EditText"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imgBtnExpand"
+            android:layout_width="@dimen/view_size_06"
+            android:layout_height="@dimen/view_size_06"
+            android:layout_marginTop="@dimen/view_spacing_05"
+            android:layout_marginEnd="@dimen/view_spacing"
+            android:layout_marginLeft="@dimen/view_spacing_05"
+            android:layout_marginRight="@dimen/view_spacing"
+            android:layout_marginStart="@dimen/view_spacing_05"
+            android:padding="@dimen/view_spacing_05"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_expand_more_white_18dp"
+            style="@style/ButtonRipple"/>
+
+    </LinearLayout>
+
+</layout>
