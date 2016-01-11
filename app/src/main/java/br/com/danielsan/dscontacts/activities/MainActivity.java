@@ -18,7 +18,6 @@ import br.com.danielsan.dscontacts.R;
 import br.com.danielsan.dscontacts.fragments.ContactsFragment;
 import br.com.danielsan.dscontacts.fragments.FavoritesFragment;
 import br.com.ilhasoft.support.view.Activities;
-import br.com.ilhasoft.support.view.BaseActivity;
 
 import br.com.danielsan.dscontacts.databinding.ActivityMainBinding;
 
