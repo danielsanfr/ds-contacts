@@ -10,7 +10,6 @@ import android.widget.EditText;
 
 import br.com.danielsan.dscontacts.databinding.FragmentNameFieldEditionBinding;
 import br.com.danielsan.dscontacts.models.Name;
-import br.com.ilhasoft.support.view.BaseFragment;
 
 /**
  * Created by daniel on 10/01/16.

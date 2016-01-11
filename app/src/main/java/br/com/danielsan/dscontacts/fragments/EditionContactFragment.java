@@ -2,7 +2,6 @@ package br.com.danielsan.dscontacts.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ import br.com.danielsan.dscontacts.managers.fields.edition.FieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.NicknameFieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.PhoneFieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.WorkFieldEditionManager;
-import br.com.ilhasoft.support.view.BaseFragment;
 
 /**
  * Created by daniel on 03/01/16.
@@ -49,8 +47,7 @@ public class EditionContactFragment extends BaseFragment {
     }
 
     private void addFieldFragment(FieldEditionManager fieldEditionManager) {
-        this.getChildFragmentManager().beginTransaction()
-                .add(R.id.rootContent, FieldEditionFragment.newInstance(fieldEditionManager)).commit();
+        this.addFragmentChild(R.id.rootContent, FieldEditionFragment.newInstance(fieldEditionManager));
     }
 
     private final Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {

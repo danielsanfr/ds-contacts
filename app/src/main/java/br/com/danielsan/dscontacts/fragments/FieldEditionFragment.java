@@ -2,19 +2,13 @@ package br.com.danielsan.dscontacts.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import br.com.danielsan.dscontacts.databinding.FragmentFieldEditionBaseBinding;
 import br.com.danielsan.dscontacts.managers.fields.edition.FieldEditionManager;
-import br.com.ilhasoft.support.view.BaseFragment;
 
 /**
  * Created by daniel on 02/01/16.

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.com.danielsan.dscontacts.adapters.ContactsAdapter;
-import br.com.ilhasoft.support.view.BaseFragment;
 
 /**
  * Created by daniel on 29/12/15.
