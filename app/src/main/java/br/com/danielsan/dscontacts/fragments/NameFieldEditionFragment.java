@@ -53,10 +53,10 @@ public class NameFieldEditionFragment extends BaseFragment {
     private void toggleNamesVisibility() {
         if (binding.txtIptLytName.getVisibility() == View.VISIBLE) {
             binding.imgBtnExpand.setRotation(180f);
-            binding.txtIptLytName.setVisibility(View.GONE);
             binding.txtIptLytFirstName.setVisibility(View.VISIBLE);
             binding.txtIptLytMiddleName.setVisibility(View.VISIBLE);
             binding.txtIptLytLastName.setVisibility(View.VISIBLE);
+            binding.txtIptLytName.setVisibility(View.GONE);
 
             shouldUpdate = false;
             name.setName(this.getTrimmedString(binding.edtTxtName));

@@ -3,6 +3,9 @@ package br.com.danielsan.dscontacts.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 /**
  * Created by daniel on 10/01/16.
  */
@@ -12,29 +15,15 @@ public class Name implements Parcelable {
     private String firstName = "";
     private String middleName = "";
     private String lastName = "";
-    private boolean shouldUpdateName = false;
-    private boolean shouldUpdateParts = false;
 
-    public Name() {
-        shouldUpdateName = true;
-        shouldUpdateParts = true;
-    }
+    public Name() { }
 
     public Name(String name) {
-        this.setName(name);
-        shouldUpdateName = true;
-        shouldUpdateParts = true;
-        this.updateParts();
-
+        this.setNameInternal(name);
     }
 
     public Name(String firstName, String middleName, String lastName) {
-        this.setFirstName(firstName);
-        this.setMiddleName(middleName);
-        this.setLastName(lastName);
-        shouldUpdateName = true;
-        shouldUpdateParts = true;
-        this.updateName();
+        this.setNameInternal(firstName, middleName, lastName);
     }
 
     public String getName() {
@@ -42,19 +31,13 @@ public class Name implements Parcelable {
     }
 
     public void setName(String name) {
-        if (!this.name.equals(name)) {
-            this.name = name.trim();
-            this.updateParts();
-        }
+        if (!this.name.equals(name))
+            this.setNameInternal(name);
     }
+
     public void setName(String firstName, String middleName, String lastName) {
-        if (!this.firstName.equals(firstName) || !this.middleName.equals(middleName)
-                || !this.lastName.equals(lastName)) {
-            this.firstName = firstName.trim();
-            this.middleName = middleName.trim();
-            this.lastName = lastName.trim();
-            this.updateName();
-        }
+        if (!name.equals(String.format("%s %s %s", firstName, middleName, lastName)))
+            this.setNameInternal(firstName, middleName, lastName);
     }
 
     public String getFirstName() {
@@ -63,8 +46,10 @@ public class Name implements Parcelable {
 
     public void setFirstName(String firstName) {
         if (!this.firstName.equals(firstName)) {
-            this.firstName = firstName.trim();
-            this.updateName();
+            ArrayList<String> parts = this.getParts(firstName);
+            parts.addAll(Arrays.asList(middleName.split(" ")));
+            parts.add(lastName);
+            this.setNameInternal(parts);
         }
     }
 
@@ -74,8 +59,10 @@ public class Name implements Parcelable {
 
     public void setMiddleName(String middleName) {
         if (!this.middleName.equals(middleName)) {
-            this.middleName = middleName.trim();
-            this.updateName();
+            ArrayList<String> parts = this.getParts(middleName);
+            parts.add(0, firstName);
+            parts.add(lastName);
+            this.setNameInternal(parts);
         }
     }
 
@@ -85,8 +72,10 @@ public class Name implements Parcelable {
 
     public void setLastName(String lastName) {
         if (!this.lastName.equals(lastName)) {
-            this.lastName = lastName.trim();
-            this.updateName();
+            ArrayList<String> parts = this.getParts(lastName);
+            parts.add(0, middleName);
+            parts.add(0, firstName);
+            this.setNameInternal(parts);
         }
     }
 
@@ -99,41 +88,55 @@ public class Name implements Parcelable {
         return name;
     }
 
-    private void updateName() {
-        if (!shouldUpdateName)
+    private ArrayList<String> getParts(String... parts) {
+        ArrayList<String> list = new ArrayList<>();
+        for (String a : parts) {
+            String[] b = a.trim().split(" ");
+            for (String c : b) {
+                String d = c.trim();
+                if (!d.isEmpty())
+                    list.add(d);
+            }
+        }
+        return list;
+    }
+
+    private void setNameInternal(String... parts) {
+        this.setNameInternal(this.getParts(parts));
+    }
+
+    private void setNameInternal(ArrayList<String> pars) {
+        name = "";
+        firstName = "";
+        middleName = "";
+        lastName = "";
+
+        int size = pars.size();
+        if (size == 0)
             return;
 
+        firstName = pars.get(0);
+        if (size == 2)
+            lastName = pars.get(1);
+        else if (size > 2) {
+            lastName = pars.get(size - 1);
+            String middleName = "";
+            for (int i = 1, length = size - 1; i < length; i++) {
+                middleName += pars.get(i) + " ";
+                this.middleName = middleName.trim();
+            }
+        }
+
+        this.updateName();
+    }
+
+    private void updateName() {
         String name = firstName;
         name += " " + middleName;
         name = name.trim();
         name += " " +  lastName;
 
         this.name = name.trim();
-    }
-
-    private void updateParts() {
-        if (!shouldUpdateParts)
-            return;
-
-        firstName = "";
-        middleName = "";
-        lastName = "";
-
-        String[] names = name.split(" ");
-        int length = names.length;
-        if (length > 0) {
-            firstName = names[0];
-            if (length == 2)
-                middleName = names[1];
-            else if (length > 2) {
-                lastName = names[length - 1];
-                String middleName = "";
-                for (int i = 1; i < length - 1; i++) {
-                    middleName += names[i] + " ";
-                    this.middleName = middleName.trim();
-                }
-            }
-        }
     }
 
     @Override
@@ -154,15 +157,12 @@ public class Name implements Parcelable {
         this.firstName = in.readString();
         this.middleName = in.readString();
         this.lastName = in.readString();
-        shouldUpdateName = true;
-        shouldUpdateParts = true;
     }
 
     public static final Parcelable.Creator<Name> CREATOR = new Parcelable.Creator<Name>() {
         public Name createFromParcel(Parcel source) {
             return new Name(source);
         }
-
         public Name[] newArray(int size) {
             return new Name[size];
         }
