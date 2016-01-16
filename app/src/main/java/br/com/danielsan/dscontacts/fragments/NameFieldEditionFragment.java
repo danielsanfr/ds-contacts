@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.RotateAnimation;
 import android.widget.EditText;
 
 import br.com.danielsan.dscontacts.databinding.FragmentNameFieldEditionBinding;
@@ -21,12 +22,22 @@ public class NameFieldEditionFragment extends BaseFragment {
     private boolean shouldUpdate;
     private FragmentNameFieldEditionBinding binding;
     private OnNameChangedListener onNameChangedListener;
+    private final RotateAnimation rotateAnimationLeft = new RotateAnimation(0f, -180f,
+                                                                            RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                                                                            RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+    private final RotateAnimation rotateAnimationRight = new RotateAnimation(-180f, 0f,
+                                                                             RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                                                                             RotateAnimation.RELATIVE_TO_SELF, 0.5f);
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         name = new Name();
         shouldUpdate = true;
+        rotateAnimationLeft.setDuration(200);
+        rotateAnimationRight.setDuration(200);
+        rotateAnimationLeft.setFillAfter(true);
+        rotateAnimationRight.setFillAfter(true);
     }
 
     @Nullable
@@ -51,8 +62,9 @@ public class NameFieldEditionFragment extends BaseFragment {
     }
 
     private void toggleNamesVisibility() {
+        RotateAnimation rotateAnimation;
         if (binding.txtIptLytName.getVisibility() == View.VISIBLE) {
-            binding.imgBtnExpand.setRotation(180f);
+            rotateAnimation = rotateAnimationLeft;
             binding.txtIptLytFirstName.setVisibility(View.VISIBLE);
             binding.txtIptLytMiddleName.setVisibility(View.VISIBLE);
             binding.txtIptLytLastName.setVisibility(View.VISIBLE);
@@ -65,7 +77,7 @@ public class NameFieldEditionFragment extends BaseFragment {
             binding.edtTxtLastName.setText(name.getLastName());
             shouldUpdate = true;
         } else {
-            binding.imgBtnExpand.setRotation(0);
+            rotateAnimation = rotateAnimationRight;
             binding.txtIptLytName.setVisibility(View.VISIBLE);
             binding.txtIptLytFirstName.setVisibility(View.GONE);
             binding.txtIptLytMiddleName.setVisibility(View.GONE);
@@ -78,6 +90,7 @@ public class NameFieldEditionFragment extends BaseFragment {
             binding.edtTxtName.setText(name.getName());
             shouldUpdate = true;
         }
+        binding.imgBtnExpand.startAnimation(rotateAnimation);
     }
 
     private void dispatchOnNameChanged() {
