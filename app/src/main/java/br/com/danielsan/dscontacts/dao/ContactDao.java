@@ -32,7 +32,9 @@ public class ContactDao extends AbstractDao<Contact, Long> {
         public final static Property Favorite = new Property(2, boolean.class, "favorite", false, "FAVORITE");
         public final static Property Picture = new Property(3, byte[].class, "picture", false, "PICTURE");
         public final static Property Color = new Property(4, int.class, "color", false, "COLOR");
-        public final static Property CreatedAt = new Property(5, java.util.Date.class, "createdAt", false, "CREATED_AT");
+        public final static Property Organization = new Property(5, String.class, "organization", false, "ORGANIZATION");
+        public final static Property Title = new Property(6, String.class, "title", false, "TITLE");
+        public final static Property CreatedAt = new Property(7, java.util.Date.class, "createdAt", false, "CREATED_AT");
     };
 
     private DaoSession daoSession;
@@ -58,7 +60,9 @@ public class ContactDao extends AbstractDao<Contact, Long> {
                 "\"FAVORITE\" INTEGER NOT NULL ," + // 2: favorite
                 "\"PICTURE\" BLOB," + // 3: picture
                 "\"COLOR\" INTEGER NOT NULL ," + // 4: color
-                "\"CREATED_AT\" INTEGER NOT NULL );"); // 5: createdAt
+                "\"ORGANIZATION\" TEXT," + // 5: organization
+                "\"TITLE\" TEXT," + // 6: title
+                "\"CREATED_AT\" INTEGER NOT NULL );"); // 7: createdAt
     }
 
     /** Drops the underlying database table. */
@@ -84,7 +88,17 @@ public class ContactDao extends AbstractDao<Contact, Long> {
             stmt.bindBlob(4, pictureConverter.convertToDatabaseValue(picture));
         }
         stmt.bindLong(5, entity.getColor());
-        stmt.bindLong(6, entity.getCreatedAt().getTime());
+ 
+        String organization = entity.getOrganization();
+        if (organization != null) {
+            stmt.bindString(6, organization);
+        }
+ 
+        String title = entity.getTitle();
+        if (title != null) {
+            stmt.bindString(7, title);
+        }
+        stmt.bindLong(8, entity.getCreatedAt().getTime());
     }
 
     @Override
@@ -108,7 +122,9 @@ public class ContactDao extends AbstractDao<Contact, Long> {
             cursor.getShort(offset + 2) != 0, // favorite
             cursor.isNull(offset + 3) ? null : pictureConverter.convertToEntityProperty(cursor.getBlob(offset + 3)), // picture
             cursor.getInt(offset + 4), // color
-            new java.util.Date(cursor.getLong(offset + 5)) // createdAt
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // organization
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // title
+            new java.util.Date(cursor.getLong(offset + 7)) // createdAt
         );
         return entity;
     }
@@ -121,7 +137,9 @@ public class ContactDao extends AbstractDao<Contact, Long> {
         entity.setFavorite(cursor.getShort(offset + 2) != 0);
         entity.setPicture(cursor.isNull(offset + 3) ? null : pictureConverter.convertToEntityProperty(cursor.getBlob(offset + 3)));
         entity.setColor(cursor.getInt(offset + 4));
-        entity.setCreatedAt(new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setOrganization(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setTitle(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setCreatedAt(new java.util.Date(cursor.getLong(offset + 7)));
      }
     
     /** @inheritdoc */

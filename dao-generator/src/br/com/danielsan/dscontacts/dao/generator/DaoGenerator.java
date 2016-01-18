@@ -33,6 +33,8 @@ public class DaoGenerator {
         contact.addByteArrayProperty("picture").customType("android.graphics.Bitmap",
                                                            "br.com.danielsan.dscontacts.dao.converters.BitmapPropertyConverter");
         contact.addIntProperty("color").notNull();
+        contact.addStringProperty("organization");
+        contact.addStringProperty("title");
         contact.addDateProperty("createdAt").notNull();
 
         return contact;

@@ -18,6 +18,8 @@ public class Contact {
     private boolean favorite;
     private Bitmap picture;
     private int color;
+    private String organization;
+    private String title;
     /** Not-null value. */
     private java.util.Date createdAt;
 
@@ -44,12 +46,14 @@ public class Contact {
         this.id = id;
     }
 
-    public Contact(Long id, Name name, boolean favorite, Bitmap picture, int color, java.util.Date createdAt) {
+    public Contact(Long id, Name name, boolean favorite, Bitmap picture, int color, String organization, String title, java.util.Date createdAt) {
         this.id = id;
         this.name = name;
         this.favorite = favorite;
         this.picture = picture;
         this.color = color;
+        this.organization = organization;
+        this.title = title;
         this.createdAt = createdAt;
     }
 
@@ -99,6 +103,22 @@ public class Contact {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /** Not-null value. */
