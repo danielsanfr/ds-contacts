@@ -17,7 +17,7 @@ public class DaoGenerator {
         DaoGenerator.addWithTagField(schema, contact, tag, "Address");
         DaoGenerator.addWithTagField(schema, contact, tag, "Email");
         DaoGenerator.addWithTagField(schema, contact, tag, "Event");
-        DaoGenerator.addWithTagField(schema, contact, tag, "IM");
+        DaoGenerator.addWithTagField(schema, contact, tag, "InstantMessage");
         DaoGenerator.addWithTagField(schema, contact, tag, "Phone");
         DaoGenerator.addWithTagField(schema, contact, tag, "Relationship");
 

@@ -18,7 +18,7 @@ import br.com.danielsan.dscontacts.managers.fields.edition.EmailFieldEditionMana
 import br.com.danielsan.dscontacts.managers.fields.edition.EventFieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.FieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.GroupFieldEditionManager;
-import br.com.danielsan.dscontacts.managers.fields.edition.IMFieldEditionManager;
+import br.com.danielsan.dscontacts.managers.fields.edition.InstantMessageFieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.NicknameFieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.NoteFieldEditionManager;
 import br.com.danielsan.dscontacts.managers.fields.edition.PhoneFieldEditionManager;
@@ -132,7 +132,7 @@ public class EditionContactFragment extends BaseFragment {
         fieldEditionManagers.add(new PictureFieldEditionManager());
         fieldEditionManagers.add(new PhoneFieldEditionManager());
         fieldEditionManagers.add(new EmailFieldEditionManager());
-        fieldEditionManagers.add(new IMFieldEditionManager());
+        fieldEditionManagers.add(new InstantMessageFieldEditionManager());
         fieldEditionManagers.add(new NoteFieldEditionManager());
         fieldEditionManagers.add(new NicknameFieldEditionManager());
         fieldEditionManagers.add(new WebsiteFieldEditionManager());

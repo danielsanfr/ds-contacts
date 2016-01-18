@@ -59,7 +59,7 @@
     </string-array>
     <string name="phone">Phone</string>
     <string name="email">E-mail</string>
-    <string name="im">IM</string>
+    <string name="instant_message">Instant message</string>
     <string name="note">Note</string>
     <string name="nickname">Nickname</string>
     <string name="website">Website</string>

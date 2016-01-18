@@ -35,7 +35,7 @@ public class Contact {
     private List<Address> addressList;
     private List<Email> emailList;
     private List<Event> eventList;
-    private List<IM> iMList;
+    private List<InstantMessage> instantMessageList;
     private List<Phone> phoneList;
     private List<Relationship> relationshipList;
 
@@ -264,25 +264,25 @@ public class Contact {
     }
 
     /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
-    public List<IM> getIMList() {
-        if (iMList == null) {
+    public List<InstantMessage> getInstantMessageList() {
+        if (instantMessageList == null) {
             if (daoSession == null) {
                 throw new DaoException("Entity is detached from DAO context");
             }
-            IMDao targetDao = daoSession.getIMDao();
-            List<IM> iMListNew = targetDao._queryContact_IMList(id);
+            InstantMessageDao targetDao = daoSession.getInstantMessageDao();
+            List<InstantMessage> instantMessageListNew = targetDao._queryContact_InstantMessageList(id);
             synchronized (this) {
-                if(iMList == null) {
-                    iMList = iMListNew;
+                if(instantMessageList == null) {
+                    instantMessageList = instantMessageListNew;
                 }
             }
         }
-        return iMList;
+        return instantMessageList;
     }
 
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */
-    public synchronized void resetIMList() {
-        iMList = null;
+    public synchronized void resetInstantMessageList() {
+        instantMessageList = null;
     }
 
     /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */

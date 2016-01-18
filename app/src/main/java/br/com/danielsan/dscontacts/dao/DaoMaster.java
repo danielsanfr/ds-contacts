@@ -16,7 +16,7 @@ import br.com.danielsan.dscontacts.dao.WebsiteDao;
 import br.com.danielsan.dscontacts.dao.AddressDao;
 import br.com.danielsan.dscontacts.dao.EmailDao;
 import br.com.danielsan.dscontacts.dao.EventDao;
-import br.com.danielsan.dscontacts.dao.IMDao;
+import br.com.danielsan.dscontacts.dao.InstantMessageDao;
 import br.com.danielsan.dscontacts.dao.PhoneDao;
 import br.com.danielsan.dscontacts.dao.RelationshipDao;
 
@@ -37,7 +37,7 @@ public class DaoMaster extends AbstractDaoMaster {
         AddressDao.createTable(db, ifNotExists);
         EmailDao.createTable(db, ifNotExists);
         EventDao.createTable(db, ifNotExists);
-        IMDao.createTable(db, ifNotExists);
+        InstantMessageDao.createTable(db, ifNotExists);
         PhoneDao.createTable(db, ifNotExists);
         RelationshipDao.createTable(db, ifNotExists);
     }
@@ -52,7 +52,7 @@ public class DaoMaster extends AbstractDaoMaster {
         AddressDao.dropTable(db, ifExists);
         EmailDao.dropTable(db, ifExists);
         EventDao.dropTable(db, ifExists);
-        IMDao.dropTable(db, ifExists);
+        InstantMessageDao.dropTable(db, ifExists);
         PhoneDao.dropTable(db, ifExists);
         RelationshipDao.dropTable(db, ifExists);
     }
@@ -94,7 +94,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(AddressDao.class);
         registerDaoClass(EmailDao.class);
         registerDaoClass(EventDao.class);
-        registerDaoClass(IMDao.class);
+        registerDaoClass(InstantMessageDao.class);
         registerDaoClass(PhoneDao.class);
         registerDaoClass(RelationshipDao.class);
     }

@@ -17,7 +17,7 @@ import br.com.danielsan.dscontacts.dao.Website;
 import br.com.danielsan.dscontacts.dao.Address;
 import br.com.danielsan.dscontacts.dao.Email;
 import br.com.danielsan.dscontacts.dao.Event;
-import br.com.danielsan.dscontacts.dao.IM;
+import br.com.danielsan.dscontacts.dao.InstantMessage;
 import br.com.danielsan.dscontacts.dao.Phone;
 import br.com.danielsan.dscontacts.dao.Relationship;
 
@@ -29,7 +29,7 @@ import br.com.danielsan.dscontacts.dao.WebsiteDao;
 import br.com.danielsan.dscontacts.dao.AddressDao;
 import br.com.danielsan.dscontacts.dao.EmailDao;
 import br.com.danielsan.dscontacts.dao.EventDao;
-import br.com.danielsan.dscontacts.dao.IMDao;
+import br.com.danielsan.dscontacts.dao.InstantMessageDao;
 import br.com.danielsan.dscontacts.dao.PhoneDao;
 import br.com.danielsan.dscontacts.dao.RelationshipDao;
 
@@ -50,7 +50,7 @@ public class DaoSession extends AbstractDaoSession {
     private final DaoConfig addressDaoConfig;
     private final DaoConfig emailDaoConfig;
     private final DaoConfig eventDaoConfig;
-    private final DaoConfig iMDaoConfig;
+    private final DaoConfig instantMessageDaoConfig;
     private final DaoConfig phoneDaoConfig;
     private final DaoConfig relationshipDaoConfig;
 
@@ -62,7 +62,7 @@ public class DaoSession extends AbstractDaoSession {
     private final AddressDao addressDao;
     private final EmailDao emailDao;
     private final EventDao eventDao;
-    private final IMDao iMDao;
+    private final InstantMessageDao instantMessageDao;
     private final PhoneDao phoneDao;
     private final RelationshipDao relationshipDao;
 
@@ -94,8 +94,8 @@ public class DaoSession extends AbstractDaoSession {
         eventDaoConfig = daoConfigMap.get(EventDao.class).clone();
         eventDaoConfig.initIdentityScope(type);
 
-        iMDaoConfig = daoConfigMap.get(IMDao.class).clone();
-        iMDaoConfig.initIdentityScope(type);
+        instantMessageDaoConfig = daoConfigMap.get(InstantMessageDao.class).clone();
+        instantMessageDaoConfig.initIdentityScope(type);
 
         phoneDaoConfig = daoConfigMap.get(PhoneDao.class).clone();
         phoneDaoConfig.initIdentityScope(type);
@@ -111,7 +111,7 @@ public class DaoSession extends AbstractDaoSession {
         addressDao = new AddressDao(addressDaoConfig, this);
         emailDao = new EmailDao(emailDaoConfig, this);
         eventDao = new EventDao(eventDaoConfig, this);
-        iMDao = new IMDao(iMDaoConfig, this);
+        instantMessageDao = new InstantMessageDao(instantMessageDaoConfig, this);
         phoneDao = new PhoneDao(phoneDaoConfig, this);
         relationshipDao = new RelationshipDao(relationshipDaoConfig, this);
 
@@ -123,7 +123,7 @@ public class DaoSession extends AbstractDaoSession {
         registerDao(Address.class, addressDao);
         registerDao(Email.class, emailDao);
         registerDao(Event.class, eventDao);
-        registerDao(IM.class, iMDao);
+        registerDao(InstantMessage.class, instantMessageDao);
         registerDao(Phone.class, phoneDao);
         registerDao(Relationship.class, relationshipDao);
     }
@@ -137,7 +137,7 @@ public class DaoSession extends AbstractDaoSession {
         addressDaoConfig.getIdentityScope().clear();
         emailDaoConfig.getIdentityScope().clear();
         eventDaoConfig.getIdentityScope().clear();
-        iMDaoConfig.getIdentityScope().clear();
+        instantMessageDaoConfig.getIdentityScope().clear();
         phoneDaoConfig.getIdentityScope().clear();
         relationshipDaoConfig.getIdentityScope().clear();
     }
@@ -174,8 +174,8 @@ public class DaoSession extends AbstractDaoSession {
         return eventDao;
     }
 
-    public IMDao getIMDao() {
-        return iMDao;
+    public InstantMessageDao getInstantMessageDao() {
+        return instantMessageDao;
     }
 
     public PhoneDao getPhoneDao() {

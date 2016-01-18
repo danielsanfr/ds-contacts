@@ -11,13 +11,13 @@ import br.com.danielsan.dscontacts.databinding.FieldEditionWithTagBinding;
 /**
  * Created by daniel on 03/01/16.
  */
-public class IMFieldEditionManager extends MultipleFieldEditionManager {
+public class InstantMessageFieldEditionManager extends MultipleFieldEditionManager {
 
-    public IMFieldEditionManager() {
-        super(R.drawable.ic_message_gray_24dp, R.string.im);
+    public InstantMessageFieldEditionManager() {
+        super(R.drawable.ic_message_gray_24dp, R.string.instant_message);
     }
 
-    protected IMFieldEditionManager(Parcel in) {
+    protected InstantMessageFieldEditionManager(Parcel in) {
         super(in);
     }
 
@@ -27,7 +27,7 @@ public class IMFieldEditionManager extends MultipleFieldEditionManager {
 
     protected View getSubView(LayoutInflater inflater, ViewGroup container) {
         FieldEditionWithTagBinding binding = FieldEditionWithTagBinding.inflate(inflater, container, false);
-        binding.edtTxtContent.setHint(R.string.im);
+        binding.edtTxtContent.setHint(R.string.instant_message);
         return binding.getRoot();
     }
 
