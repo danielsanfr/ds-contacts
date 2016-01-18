@@ -1,7 +1,8 @@
 package br.com.danielsan.dscontacts.dao;
 
 import java.util.List;
-import br.com.danielsan.dscontacts.dao.DaoSession;
+
+import br.com.danielsan.dscontacts.models.Name;
 import de.greenrobot.dao.DaoException;
 
 import android.graphics.Bitmap;

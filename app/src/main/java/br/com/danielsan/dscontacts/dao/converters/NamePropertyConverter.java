@@ -1,6 +1,6 @@
 package br.com.danielsan.dscontacts.dao.converters;
 
-import br.com.danielsan.dscontacts.dao.Name;
+import br.com.danielsan.dscontacts.models.Name;
 import de.greenrobot.dao.converter.PropertyConverter;
 
 /**

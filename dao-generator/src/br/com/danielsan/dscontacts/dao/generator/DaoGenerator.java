@@ -27,7 +27,7 @@ public class DaoGenerator {
     private static Entity addContact(Schema schema) {
         Entity contact = schema.addEntity("Contact");
         contact.addIdProperty();
-        contact.addStringProperty("name").notNull().customType("br.com.danielsan.dscontacts.dao.Name",
+        contact.addStringProperty("name").notNull().customType("br.com.danielsan.dscontacts.models.Name",
                                                                "br.com.danielsan.dscontacts.dao.converters.NamePropertyConverter");
         contact.addBooleanProperty("favorite").notNull();
         contact.addByteArrayProperty("picture").customType("android.graphics.Bitmap",
