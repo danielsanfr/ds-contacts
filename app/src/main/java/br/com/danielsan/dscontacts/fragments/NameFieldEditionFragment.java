@@ -10,7 +10,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.EditText;
 
 import br.com.danielsan.dscontacts.databinding.FragmentNameFieldEditionBinding;
-import br.com.danielsan.dscontacts.models.Name;
+import br.com.danielsan.dscontacts.dao.Name;
 import br.com.ilhasoft.support.view.SimpleTextWatcher;
 
 /**

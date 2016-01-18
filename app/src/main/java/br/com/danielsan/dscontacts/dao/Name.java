@@ -1,4 +1,4 @@
-package br.com.danielsan.dscontacts.models;
+package br.com.danielsan.dscontacts.dao;
 
 import android.os.Parcel;
 import android.os.Parcelable;

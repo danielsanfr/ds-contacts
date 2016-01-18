@@ -16,20 +16,14 @@
         <item>Job Fax</item>
         <item>Home Fax</item>
         <item>Pager</item>
-        <item>@string/other</item>
-        <item>@string/custom</item>
     </string-array>
     <string-array name="field_address_and_email">
         <item>Home</item>
         <item>Job</item>
-        <item>@string/other</item>
-        <item>@string/custom</item>
     </string-array>
     <string-array name="field_event">
         <item>Birthday</item>
         <item>Commemorative Date</item>
-        <item>@string/other</item>
-        <item>@string/custom</item>
     </string-array>
     <string-array name="field_im">
         <item>AIM</item>
@@ -41,8 +35,6 @@
         <item>ICQ</item>
         <item>Jabber</item>
         <item>QQ</item>
-        <item>@string/other</item>
-        <item>@string/custom</item>
     </string-array>
     <string-array name="field_relationship">
         <item>Assistent</item>
@@ -58,8 +50,6 @@
         <item>Sister</item>
         <item>Wife</item>
         <item>Husband</item>
-        <item>@string/other</item>
-        <item>@string/custom</item>
     </string-array>
     <string-array name="field_group">
         <item>Friends</item>
